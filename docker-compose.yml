@@ -35,8 +35,10 @@ services:
       volumes:
         -  ./Flask:/usr/src/app
       ports:
-        - "5000:5000"
+        - "5010:5000"
+      #network_mode: "host"
       links:
         - keycloak
       depends_on:
         - keycloak
+

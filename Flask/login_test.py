@@ -10,19 +10,19 @@ from flask_oidc import OpenIDConnect
 
 app = Flask(__name__)
 #print(os.environ, file=sys.stderr)
-app_key = '&}tddJ-fE.s7sVb1ll8NDqz2x2z>wsp-hyek{g>Aav5$[,tOjWB1S24{a{Nanip'
+app_key = 'e852179e-4f11-42d6-b432-f37a2c9ca627'
 #print(app_key, file=sys.stderr)
 app.config.update({
-    'SECRET_KEY': 'LeYOJ.SducR1Gy2l&H.%#9,=&8A-Wu-gDx*s-@t)1+JbV|p!BEbQThu&9GQ6$j;',
+    'SECRET_KEY': 'e852179e-4f11-42d6-b432-f37a2c9ca627',
     'TESTING': True,
     'DEBUG': True,
     'OIDC_CLIENT_SECRETS': 'client_secrets.json',
-    'OIDC_OPENID_REALM': 'transactionService',  
+    'OIDC_OPENID_REALM': 'alchemybox',  
     'OIDC_SCOPES': ['openid', 'email', 'profile'],
     'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post'#,
     #'OIDC_OPENID_REALM': 'http://localhost:5001/oidc_callback'
 })
-#
+
 current_user = {"user_id": "bob_test", "admin":True}
 
 oidc = OpenIDConnect(app)
