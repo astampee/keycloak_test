@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirecting...</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).ready(
+        function() {
+            post_data = {fragment:window.location.href};
+            console.log(post_data);
+            $.post(window.location.href, post_data, function(data, status){
+                alert("Logging in...");
+                $('div.url').text("Logging in:" + window.location.href + ", status:" + status);
+            });
+        }
+    );
+</script>
+</head>
+<body>
+    <div class='url'></div>
+</body>
+</html>                                		                            

@@ -1,0 +1,9 @@
+{
+  "realm": "alchemybox",
+  "auth-server-url": "http://localhost:8080/auth",
+  "ssl-required": "none",
+  "enable-cors": true,
+  "resource": "ab_login",
+  "public-client": true,
+  "confidential-port": 0
+}

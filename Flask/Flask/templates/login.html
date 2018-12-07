@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://localhost:8080/auth/js/keycloak.js"></script>
+        <!--<script src="keycloak.js"></script>
+        <script src="{{url_for('static', filename='keycloak.js')}}"></script>
+        <script src="{{url_for('static', filename='auth.js')}}"></script>-->
+        <script>
+            console.log('Redirect url: {{redirect}}')
+            var keycloak = Keycloak("{{url_for('static', filename='keycloak.json')}}");
+            keycloak.init({ onLoad: 'login-required' }).success(function(authenticated) {
+                console.log(authenticated ? 'authenticated' : 'not authenticated');
+                if(authenticated){
+                    console.log(keycloak.token)
+                    keycloak.updateToken(300).success(function() {
+                        console.log('Token refreshed...')
+                        console.log('New token:')
+                        console.log(keycloak.token)
+                        document.cookie = "x-access-token="+keycloak.token+"; path=/";
+                        console.log('cookie set')
+                        window.location.replace("/{{redirect}}");
+                    }).error(function() {
+                        alert('Failed to refresh token');
+                    });
+                }
+                else{
+                    console.log('No token')
+                };
+            }).error(function() {
+                console.log('failed to initialize');
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+            This is the login page
+        </div>
+    </body>
+</html>
